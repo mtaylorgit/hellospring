@@ -49,6 +49,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Chris Bay
  */
@@ -79,6 +82,15 @@ public class HelloController {
     @GetMapping("form")
     public String helloForm() {
         return "form";
+    }
+    @GetMapping("hello-names")
+    public String helloNames(Model model) {
+        List<String> names = new ArrayList<>();
+        names.add("Cereal");
+        names.add("Chocolate");
+        names.add("Donuts");
+        model.addAttribute("names", names);//first argument "names" is the variable the template will see, second argument is the value that attribute should have
+        return "hello-list";
     }
 
 }
